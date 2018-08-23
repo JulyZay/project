@@ -526,7 +526,7 @@
                 "it('should return a JSON response', () => {",
                 "  response.should.be.json;",
                 "});",
-                "it('should return the correct course', () => { ​",
+                "it('should return the correct course1', () => { ​",
                 "",
                 "response.body.title.should.equal('New_course for Vasia');​",
                 "});",
