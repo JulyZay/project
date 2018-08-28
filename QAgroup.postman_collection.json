@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "6756109e-7565-4fbb-a91b-1ab70713b665",
+		"name": "QAgroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "306501cb-f011-4101-8e34-3b99ca8e0ca5",
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db980543-27f2-4808-87e8-b9f7146dfc37",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"eval(globals.postmanBDD)",
+							" var schema = ",
+							"    {",
+							"        \"items\": {",
+							"            \"first_name\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"last_name\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"email\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"part_email\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"id\": {",
+							"                \"type\": \"string\"",
+							"            },",
+							"            \"token\": {",
+							"                \"type\": \"string\"",
+							"            }",
+							"        }",
+							"   };",
+							"",
+							" it('Test 1: should return valid Responce schema', () => {",
+							"        tv4.validate(response.body, schema).should.be.true;",
+							"      });",
+							"",
+							"",
+							"it('should return a 200 response', () => {",
+							"  response.should.have.status(200);",
+							"});",
+							"",
+							"",
+							"it('should return a JSON response', () => {",
+							"  response.should.be.json;",
+							"});",
+							"",
+							"it('should return the correct user', () => {",
+							"  response.body.should.have.property('id', 40);",
+							"});",
+							"",
+							"pm.environment.set(\"token\", jsonData.token);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "1ce1d644-87a5-44cf-8f30-4334bf197e12",
+			"name": "sign_up",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "77dd7364-6a4d-409a-bfaf-a52f8b6d2824",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "df2c1139-9b53-4b7e-a68e-a46e22feb6e3",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"pm.environment.set(\"token\", jsonData.token);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "vasia",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "wasia",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ssd@vasia.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/sign_up",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sign_up"
+					]
+				},
+				"description": "Sign_up"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "910d781d-fb30-4dc4-83fb-114a493e2bd4",
+			"name": "get_course",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "course_id",
+						"value": "68"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/get/course",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"get",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "32335195-7a59-4ce3-bc06-2d797ce487c3",
+			"name": "all courses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/courses/all?page=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4a350cb5-470e-4792-9d3b-dd3a8aa5d036",
+			"name": "course_settings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "59b146ca-6f99-43f2-818b-5e6cb5185f47",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"eval(globals.postmanBDD)",
+							"​",
+							"pm.test(\"status to be true\", () => {",
+							"pm.expect(pm.status.get(\"status\")).to.equal(\"true\");",
+							"});",
+							"",
+							"pm.environment.set(\"token\", jsonData.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"course_id\":\"117\",\r\n\t\"owner\":{\r\n\t\t\"id\":40,\r\n\t\t\"avatar\":null,\r\n\t\t\"last_name\":\"wasia\",\r\n\t\t\"first_name\":\"vasia\"\r\n\t},\r\n\t\"type\":\"free\",\r\n\t\"time_zone\":\"UTC +03:00\",\r\n\t\"time_zone_value\":{\r\n\t\t\"value\":\"UTC +03:00\",\r\n\t\t\"label\":\"(UTC+03:00)Europe/Kiev\"\r\n\t},\r\n\t\"end_date\":\"unlimited\",\r\n\t\"start_date\":\"2018-08-09\",\r\n\t\"publish\":true\r\n\t\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/course/settings",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "5e42dc44-b1f9-4c9d-a6ed-91f5a6dfac9f",
+			"name": "reccomendation_list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/recommendation/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"recommendation",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "5a34bbc3-71ce-4090-9643-f77048356535",
+			"name": "module_event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1e90362-f0bd-4b32-a0c1-8a948afcce2f",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"eval(globals.postmanBDD)",
+							"",
+							"",
+							"describe('module_event', () => {  ​",
+							"",
+							"it('should return the corect event', () => { ​",
+							"",
+							"response.body.id.should.equal(125);",
+							"response.body.created_at.should.equal('2018-08-13');​",
+							"});​",
+							"});​",
+							"pm.environment.set(\"token\", jsonData.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/module/event/get?course_id={{courseId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"module",
+						"event",
+						"get"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "{{courseId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "2b4c9815-05c7-4e55-9fad-d7cf3ab13f3a",
+			"name": "Course_rpeviev",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53fc0b09-2c40-402c-888f-9e714440bbec",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"eval(globals.postmanBDD)",
+							"it('should return a 200 response', () => {",
+							"  response.should.have.status(200);",
+							"});",
+							"",
+							"",
+							"it('should return a JSON response', () => {",
+							"  response.should.be.json;",
+							"});",
+							"it('should return the correct course', () => { ​",
+							"",
+							"response.body.title.should.equal('New_course for Vasia');​",
+							"});",
+							"pm.environment.set(\"token\", jsonData.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"value": ""
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/course/preview?course_id=117",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"preview"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "117"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "3d65bb1d-e3ca-4c0b-a8d0-7e7009cba3c3",
+			"name": "profile_pacage_limit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9bbaeb8e-06c5-42a9-bdee-c40d33c9861f",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"eval(globals.postmanBDD); ​",
+							"describe('pakage limit', () => { ",
+							"it('should return the correct data, () => {",
+							"response.body.id.should.equal(1);​",
+							"response.body.commision.should.equal(5);​",
+							"response.body.webinar_users.should.equal(15);​",
+							"});",
+							"});​"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/profile/package/limit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"profile",
+						"package",
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "1c812937-44f5-428a-8048-bc5014023047",
+			"name": "article_create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"title\":\"Vasia Lesson\",\r\n\t\"description\":\"\",\r\n\t\"article\":\"<p>fkdmlhkdf;ljkf;ljk;kjytlhk'yt</p>\",\r\n\t\"type\":\"article\",\r\n\t\"presentation\":\"\",\r\n\t\"expected_time\":79200,\r\n\t\"hours\":\"22\",\r\n\t\"minutes\":0,\r\n\t\"module_id\":\"108\",\r\n\t\"course_id\":\"117\",\r\n\t\"id\":null,\r\n\t\"files_id\":[],\r\n\t\"answer\":0\r\n\t\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/article/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"article",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "462dd982-e3ef-4aa8-b778-f6835b4155a9",
+			"name": "profile_article_list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/profile/article/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"profile",
+						"article",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "e0017e6e-9c43-48ca-8587-b5a77f900471",
+			"name": "invite_lecturer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"param_invite\":[{\"course_id\":\"91\",\r\n\t\"module_id\":93,\r\n\t\"event_id\":null,\r\n\t\"type\":\"module\",\r\n\t\"email\":\"sss@gmail.com\",\r\n\t\"first_name\":\"July\",\r\n\t\"last_name\":\"Yanger\",\r\n\t\"name\":\"July Yanger\",\r\n\t\"description\":\"ddfgg\"}]\r\n\t\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/course/invite/lecture",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"invite",
+						"lecture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "37aa79e7-0186-45ed-8c64-e5a02ec9d60d",
+			"name": "Course_module_list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c1b58d1-cb91-4f34-af87-e77ef29c9cde",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/course/module/list?course_id={{courseId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"module",
+						"list"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": "{{courseId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "933cfd75-449b-4443-a680-c7f5297846f5",
+			"name": "Course ceate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11005249-b27f-46b1-a7b0-e6c8255f371b",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData= JSON.parse(responseBody);",
+							"console.log (jsonData);",
+							"",
+							"describe('Course create', () => {  ​",
+							"it('should return the correct course', () => { ​",
+							"response.body.id.should.equal(291);​",
+							"",
+							"});​",
+							"",
+							"});​"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"industry_id\":[],\r\n\t\"categories_id\":[],\r\n\t\"privacy\":\"public\",\r\n\t\"level\":\"Beginner\",\r\n\t\"title\":\"New course1\"\r\n\t\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/course/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"course",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "967f00ed-9394-4fab-9064-254d14cae6ef",
+			"name": "Category_list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/category/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"category",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
