@@ -5,13 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "async": "^2.6.1",
-    "newman": "^4.0.2",
     "newman-reporter-html": "^1.0.1",
-    "npm": "^6.4.1"
+    "newman": "^4.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test_pipeline": "QAgroup.postman_collection.json -e diprella.postman_environment.json"
+    "test_pipeline": "QAgroup.postman_collection.json -e diprella.postman_environment.json --reporters html,cli --reporter-html-export report.html"
   },
   "repository": {
     "type": "git",
