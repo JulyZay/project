@@ -1,0 +1,25 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.6.1",
+    "newman-reporter-html": "^1.0.1",
+    "newman": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test_pipeline": "QAgroup.postman_collection.json -e diprella.postman_environment.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulyZay/project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulyZay/project/issues"
+  },
+  "homepage": "https://github.com/JulyZay/project#readme"
+}
